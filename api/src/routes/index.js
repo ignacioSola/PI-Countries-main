@@ -31,7 +31,7 @@ router.get('/countries', async (req,res) => {
         const paisPorNombre = allCountries.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
         if(paisPorNombre.length){
             let nombre = paisPorNombre.map(e => e.name);
-            let paisYActividad = await Country.findOne({where:{name:nombre},include: Activity})
+            let paisYActividad = await Country.findAll({where:{name:nombre},include: Activity})
             res.send(paisYActividad)
         } 
         else {
