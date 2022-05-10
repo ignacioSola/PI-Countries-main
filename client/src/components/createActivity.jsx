@@ -1,9 +1,32 @@
 import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from "react-router-dom";
-import Countries from "./country";
 import './createComponent.css'
 import {createActivity, getActivities, getCountries} from '../actions'
+// import { useHistory } from "react-router";
+
+function validate(input){
+    let errors = {}
+    if(!input.name){
+        errors.name = "name is required"
+    }
+    if(input.difficulty<1 || input.difficulty>5){
+        errors.difficulty = "difficulty must be a value between 1 and 5"
+    }
+    if(!input.difficulty){
+        errors.difficulty = "complete difficulty"
+    }
+    if(!input.duration){
+        errors.duration = "complete duration"
+    }
+    if(!input.season){
+        errors.season = "add season"
+    }
+    if(!input.idPais){
+        errors.idPais = "add country"
+    }
+    return errors;
+}
 
 
 export default function CreateActivity() {
@@ -14,15 +37,17 @@ export default function CreateActivity() {
         season: [],
         idPais: []
     });
+    const [errors, setErrors] = useState({})
     const activities = useSelector(state => state.activities);
     const countries = useSelector(state => state.countries)
     const dispatch = useDispatch();
+    // const history = useHistory()
 
     useEffect(() => {
         if(countries.length === 0){
             dispatch(getCountries())
         }
-        dispatch(getActivities());
+        // dispatch(getActivities());
     },[])
 
     
@@ -32,19 +57,29 @@ export default function CreateActivity() {
             ...input,
             [e.target.name] : e.target.value
         })
+        setErrors({
+            ...input,
+            [e.target.name] : e.target.value
+        })
     }
+
+
     function handleSelect(e){
         setInput({
             ...input,
             idPais: [...input.idPais, e.target.value]
         })    
     }
+
+
     function handleSelect2(e){
         setInput({
             ...input,
             season: [...input.season, e.target.value]
         })    
     }
+
+    
     function handleOnSubmit(e){
         e.preventDefault();
         dispatch(createActivity(input));
@@ -57,6 +92,7 @@ export default function CreateActivity() {
             season: [],
             idPais: []
         })
+        // history.push('/home')
     }
 
     return (
@@ -76,6 +112,9 @@ export default function CreateActivity() {
 
                       onChange={handleOnChange}
                     />
+                    {errors.name && (
+                        <p>{errors.name}</p>
+                        )}
                 </div>
                 <div>
                     <label>Difficulty:</label>
