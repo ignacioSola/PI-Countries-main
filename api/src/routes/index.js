@@ -18,15 +18,7 @@ router.get('/countries', async (req,res) => {
         await getCountry();
     }
     const allCountries = await Country.findAll();
-    
 
-    // let infoPrincipal = allCountries.map(e => {
-    //     return {
-    //         name: e.name,
-    //         flag: e.flag,
-    //         continente: e.continente,
-    //     }
-    // })
     if(name){
         const paisPorNombre = allCountries.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
         if(paisPorNombre.length){
@@ -76,7 +68,14 @@ router.post('/activity', async (req, res,next) => {
     catch(error){
         next(error)
     }
+
     
+})
+
+router.get('/activities', async (req, res) => {
+    const allActivities = await Activity.findAll();
+    allActivities.length ? res.send(allActivities)
+    : res.send('No activities')
     
 })
 

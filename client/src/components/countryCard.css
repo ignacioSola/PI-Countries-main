@@ -1,0 +1,25 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    margin: 50px;
+    background-color:rgba(55, 55, 135, 0.449);
+    color:azure;
+    border-radius: 10px;
+    /* padding: px 30px; */
+}
+
+.nameCard{
+    text-decoration:none;
+    color:azure
+}
+.nameCard:hover{
+    color:brown
+}
+
+.flag{
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+}

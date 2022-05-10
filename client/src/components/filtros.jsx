@@ -14,7 +14,7 @@ export default function Filtros({handleSort}){
     return(
         <div>
             <select onChange={(e) => handleSort(e)} >
-                <option >Order</option>
+                <option value='order'>Order</option>
                 <option value="asc">A-Z</option>
                 <option value="desc">Z-A</option>
             </select>

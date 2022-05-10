@@ -7,6 +7,7 @@ import Countries from "./country";
 import Search from "./search";
 import Filtros from "./filtros";
 import Paginado from "./paginado";
+import './Home.css'
 
 export default function Home(){
     const dispatch = useDispatch();
@@ -35,29 +36,28 @@ export default function Home(){
 
     function handleSort(e){
         e.preventDefault();
-        dispatch(filterByName(e.target.value));
-        setCurrentPage(1)
-        setOrden(`ordenado ${e.target.value}`);
+        if(e.target.value !== 'order'){
+            dispatch(filterByName(e.target.value));
+            setCurrentPage(1)
+            setOrden(`ordenado ${e.target.value}`);
+        }
     }
 
     return(
-        <div>
+        <div >
             <Search/>
-            <hr/>
             <button onClick={handleOnClick} >refresh</button>
             <button>
                 <Link to={'/activity'}>Create activity</Link>
             </button>
             
-            <hr/>
             <Filtros
-            handleSort = {handleSort}/>
-            <hr/>
+                handleSort = {handleSort}/>
             <Paginado
-            allCountries={allCountries.length}
-            countriesPerPage={countriesPerPage}
-            paginado={paginado} />
-            <div>
+                allCountries={allCountries.length}
+                countriesPerPage={countriesPerPage}
+                paginado={paginado} />
+            <div className="container-country" >
                 {currentCountries && currentCountries.map(e => {
                 return <Countries
                 name= {e.name}

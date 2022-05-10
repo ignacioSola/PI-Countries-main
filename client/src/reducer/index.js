@@ -1,9 +1,10 @@
-import {GET_COUNTRIES, GET_COUNTRIES_BY_NAME, DETAIL, FILTER_BY_CONTINENT, FILTER_BY_NAME} from '../actions';
+import {GET_COUNTRIES, GET_COUNTRIES_BY_NAME, DETAIL, FILTER_BY_CONTINENT, FILTER_BY_NAME, CREATE_ACTIVITY, GET_ACTIVITIES} from '../actions';
 
 const initialState = {
     countries: [],
     countries2: [],
-    detalle: {}
+    detalle: {},
+    activities: []
 }
 
 function rootReducer(state=initialState, actions ){
@@ -54,6 +55,16 @@ function rootReducer(state=initialState, actions ){
             return{
                 ...state,
                 countries: filter2
+            }
+        case CREATE_ACTIVITY: 
+            return {
+                ...state
+            }
+           
+        case  GET_ACTIVITIES:    
+            return{
+                ...state,
+                activities: actions.payload
             }
 
         default : return state;
