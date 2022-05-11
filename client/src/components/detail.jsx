@@ -22,7 +22,7 @@ console.log(detalle)
       </Link>
       
       <div className="det">
-        <img src={detalle.flag}/> 
+        <img src={detalle.flag} className='d-flag'/> 
         <h3>{detalle.name}</h3>
         <h3>{detalle.capital}</h3>
         <h3>{detalle.continente}</h3>

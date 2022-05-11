@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {getCountryByName} from '../actions';
+import './Home.css'
 
 export default function Search(){
     const[input, setInput] = useState('');
@@ -16,8 +17,8 @@ export default function Search(){
 
     return (
          <div>
-             <input type='text' onChange={handleOnChange} placeholder='Country...' />
-             <button onClick={handleOnClick}>Search</button>
+             <input type='text' onChange={handleOnChange} placeholder='Country...'  className="input"/>
+             <button onClick={handleOnClick} className='c-activity' >Search</button>
          </div>
      )
 }

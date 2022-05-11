@@ -97,12 +97,12 @@ export default function CreateActivity() {
 
     return (
         <div>
-            <button>
-                <Link to='/home'>Back</Link>
-            </button>
             
+            <Link to='/home'>
+                <button className="btn-atras"> Back </button>
+            </Link>
             <form onSubmit={handleOnSubmit} className="cre">
-                <div>
+                <div className="div">
                     <label>Name:</label>
                     <input
                       type='text'
@@ -116,7 +116,7 @@ export default function CreateActivity() {
                         <p>{errors.name}</p>
                         )}
                 </div>
-                <div>
+                <div className="div">
                     <label>Difficulty:</label>
                     <input
                       type='number'
@@ -131,7 +131,7 @@ export default function CreateActivity() {
                         <p>{errors.difficulty}</p>
                         )}
                 </div>
-                <div>
+                <div className="div">
                     <label>Duration:</label>
                     <input
                       type='text'
@@ -144,7 +144,7 @@ export default function CreateActivity() {
                         <p>{errors.duration}</p>
                         )}
                 </div>
-                <div>
+                <div className="div">
                     <label>Season:</label>
                     <select onChange={handleSelect2} key='season'>
                         <option></option>
@@ -157,7 +157,7 @@ export default function CreateActivity() {
                  <ul>
                         <li>{input.season.map(e => e + ', ')}</li>
                     </ul>
-                <div>
+                <div className="div">
                     <label>Country/ies:</label>
                     <select onChange={handleSelect} key='idPais'>
                         <option></option>
@@ -172,8 +172,9 @@ export default function CreateActivity() {
                     <ul>
                         <li>{input.idPais.map(e => e + ', ')}</li>
                     </ul>
+                <button type="submit" onClick={handleOnSubmit} className='btn-cre'>Create Activity</button>    
             </form>
-            <button type="submit" onClick={handleOnSubmit} >Create Activity</button>
+            
         </div>
     )
 }
