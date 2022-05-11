@@ -1,0 +1,9 @@
+.text{
+    color: white;
+}
+.btn{
+    width: 100px;
+    height: 40px;
+    color: azure;
+    background-color: brown;
+}
