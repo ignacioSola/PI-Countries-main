@@ -17,9 +17,10 @@ console.log(detalle)
 
   return(
     <div>
-      <button>
-        <Link to='/home'>Back</Link>
-      </button>
+      <Link to='/home'>
+        <button className="button"> Back </button> 
+      </Link>
+      
       <div className="det">
         <img src={detalle.flag}/> 
         <h3>{detalle.name}</h3>
@@ -28,7 +29,7 @@ console.log(detalle)
         <h3>{detalle.subregion}</h3>
         <h3>Area: {detalle.area} km</h3>
         <h3>Population: {detalle.population}</h3>
-        <h3>Activities: {detalle.Activities && detalle.Activities.map(e => e.name+', ')}</h3>
+        <h3>Activities: {detalle.Activities && detalle.Activities.map(e => e.name+': "Difficulty:'+e.difficulty+', duratyion: '+e.duration+', season: '+e.season+'." ')}</h3>
       </div>
     </div>
       

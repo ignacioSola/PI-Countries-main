@@ -46,10 +46,11 @@ export default function Home(){
     return(
         <div >
             <Search/>
-            <button onClick={handleOnClick} >refresh</button>
-            <button>
-                <Link to={'/activity'}>Create activity</Link>
-            </button>
+            <button onClick={handleOnClick} className='c-activity'>refresh</button>
+            
+                <Link to={'/activity'} >
+                    <button className='c-activity' >Create activity</button> 
+                </Link>
             
             <Filtros
                 handleSort = {handleSort}/>

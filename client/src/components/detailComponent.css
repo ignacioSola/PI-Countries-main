@@ -1,3 +1,17 @@
 .det{
-    color: azure;
+    color: rgb(195, 199, 199);
+    width: 500px;
+    height: 850px;
+    margin: 50px;
+    background-color:rgba(55, 55, 135, 0.449);
+    border-radius: 10px;
+}
+.button{
+    margin-left: 10px;
+    
+}
+.d-flag{
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
 }

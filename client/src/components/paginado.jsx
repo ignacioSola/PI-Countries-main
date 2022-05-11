@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function Paginado({allCountries, paginado, countriesPerPage}) {
     const paginas = [];
     
