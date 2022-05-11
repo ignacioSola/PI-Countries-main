@@ -29,7 +29,7 @@ console.log(detalle)
         <h3>{detalle.subregion}</h3>
         <h3>Area: {detalle.area} km</h3>
         <h3>Population: {detalle.population}</h3>
-        <h3>Activities: {detalle.Activities && detalle.Activities.map(e => e.name+': "Difficulty:'+e.difficulty+', duratyion: '+e.duration+', season: '+e.season+'." ')}</h3>
+        <h3>Activities: {detalle.Activities && detalle.Activities.map(e => e.name+': "Difficulty: '+e.difficulty+', duratyion: '+e.duration+', season: '+e.season+'." ')}</h3>
       </div>
     </div>
       

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from "react-router-dom";
 import './createComponent.css'
-import {createActivity, getActivities, getCountries} from '../actions';
+import {createActivity, getCountries} from '../actions';
 
 
 function validate(input){
@@ -42,7 +42,6 @@ export default function CreateActivity() {
         if(countries.length === 0){
             dispatch(getCountries())
         }
-        // dispatch(getActivities());
     },[])
 
     
@@ -169,6 +168,7 @@ export default function CreateActivity() {
                         }
                     </select>      
                 </div>
+              
                     <ul>
                         <li>{input.idPais.map(e => e + ', ')}</li>
                     </ul>
@@ -177,4 +177,4 @@ export default function CreateActivity() {
             
         </div>
     )
-}
+} 
