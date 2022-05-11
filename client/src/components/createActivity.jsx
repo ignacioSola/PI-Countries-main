@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from "react-router-dom";
 import './createComponent.css'
-import {createActivity, getActivities, getCountries} from '../actions'
-// import { useHistory } from "react-router";
+import {createActivity, getActivities, getCountries} from '../actions';
+
 
 function validate(input){
     let errors = {}
@@ -19,12 +19,7 @@ function validate(input){
     if(!input.duration){
         errors.duration = "complete duration"
     }
-    if(!input.season){
-        errors.season = "add season"
-    }
-    if(!input.idPais){
-        errors.idPais = "add country"
-    }
+
     return errors;
 }
 
@@ -39,9 +34,9 @@ export default function CreateActivity() {
     });
     const [errors, setErrors] = useState({})
     const activities = useSelector(state => state.activities);
-    const countries = useSelector(state => state.countries)
+    const countries = useSelector(state => state.countries2)
     const dispatch = useDispatch();
-    // const history = useHistory()
+    
 
     useEffect(() => {
         if(countries.length === 0){
@@ -57,10 +52,10 @@ export default function CreateActivity() {
             ...input,
             [e.target.name] : e.target.value
         })
-        setErrors({
+        setErrors(validate({
             ...input,
             [e.target.name] : e.target.value
-        })
+        }))
     }
 
 
@@ -82,17 +77,22 @@ export default function CreateActivity() {
     
     function handleOnSubmit(e){
         e.preventDefault();
-        dispatch(createActivity(input));
-        alert('Activity created')
-        console.log(input)
-        setInput({
+        if(!Object.keys(errors).length && input.season.length>0 && input.idPais.length>0){
+            dispatch(createActivity(input));
+            alert('Activity created')
+            setInput({
             name:'',
             difficulty:'',
             duration:'',
             season: [],
             idPais: []
         })
-        // history.push('/home')
+        }
+        else{
+            alert('complete all fields ')
+        }
+        
+       
     }
 
     return (
@@ -127,6 +127,9 @@ export default function CreateActivity() {
                       name="difficulty"
                       onChange={handleOnChange}
                     />
+                    {errors.difficulty && (
+                        <p>{errors.difficulty}</p>
+                        )}
                 </div>
                 <div>
                     <label>Duration:</label>
@@ -137,6 +140,9 @@ export default function CreateActivity() {
                       name="duration"
                       onChange={handleOnChange}
                     />
+                    {errors.duration && (
+                        <p>{errors.duration}</p>
+                        )}
                 </div>
                 <div>
                     <label>Season:</label>

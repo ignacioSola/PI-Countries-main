@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import { getCountries, filterByName } from "../actions";
+import { getCountries, filterByName, getActivities } from "../actions";
 import { Link } from "react-router-dom";
 import Countries from "./country";
 import Search from "./search";
@@ -13,7 +13,6 @@ export default function Home(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
     const [orden, setOrden] = useState('');
-    console.log(allCountries)
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
     const indexLastCountry = currentPage * countriesPerPage;
@@ -27,6 +26,7 @@ export default function Home(){
 
     useEffect(() => {
         dispatch(getCountries());
+        dispatch(getActivities())
     },[]);
 
     function handleOnClick(e){

@@ -7,6 +7,7 @@ export const FILTER_BY_CONTINENT = 'FilterByContinent';
 export const FILTER_BY_NAME = 'FilterByName';
 export const CREATE_ACTIVITY = 'CreateActivity';
 export const GET_ACTIVITIES = 'GetActivities';
+export const FILTER_BY_ACTIVITY = 'FilterByActivity'
 
  
 export function getCountries(){
@@ -74,5 +75,12 @@ export function getActivities(){
              type: GET_ACTIVITIES,
              payload: res.data});
      } )
+    }
+ }
+
+ export function filterByActivity(payload){
+    return{
+        type:FILTER_BY_ACTIVITY,
+        payload
     }
  }

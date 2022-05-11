@@ -1,4 +1,4 @@
-import {GET_COUNTRIES, GET_COUNTRIES_BY_NAME, DETAIL, FILTER_BY_CONTINENT, FILTER_BY_NAME, CREATE_ACTIVITY, GET_ACTIVITIES} from '../actions';
+import {GET_COUNTRIES, GET_COUNTRIES_BY_NAME, DETAIL, FILTER_BY_CONTINENT, FILTER_BY_NAME, CREATE_ACTIVITY, GET_ACTIVITIES, FILTER_BY_ACTIVITY} from '../actions';
 
 const initialState = {
     countries: [],
@@ -66,6 +66,32 @@ function rootReducer(state=initialState, actions ){
                 ...state,
                 activities: actions.payload
             }
+
+        case FILTER_BY_ACTIVITY: 
+            const todos = state.countries2;
+            const hasActivity = todos.filter( e => e.Activities.length != 0)
+            const nuevoArr = hasActivity.filter(e => {
+                for(let i=0; i<e.Activities.length; i++){
+                    if(e.Activities[i].name == actions.payload) return true
+                }
+            })
+            // console.log(hasActivity)
+            // const filtro = []
+            // for(var i = 0; i<hasActivity.length; i++){
+            //     console.log(hasActivity[i])
+            //     for(var j=0; j<hasActivity[i].Activities.length;j++){
+            //         console.log(hasActivity[i][j])
+            //         // if(hasActivity[i][j].name === actions.payload){
+            //         //     filtro.push(hasActivity[i][j])
+            //         // }
+            //     }
+            // }
+            // console.log(filtro)
+            return{
+                ...state,
+                countries: nuevoArr
+            }
+             
 
         default : return state;
     }

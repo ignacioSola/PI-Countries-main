@@ -17,7 +17,7 @@ router.get('/countries', async (req,res) => {
     if(check === 0){
         await getCountry();
     }
-    const allCountries = await Country.findAll();
+    const allCountries = await Country.findAll({include : Activity });
 
     if(name){
         const paisPorNombre = allCountries.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
