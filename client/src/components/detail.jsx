@@ -8,9 +8,8 @@ export default function Detail(){
   const dispatch = useDispatch();
   const detalle = useSelector(state => state.detalle);
 
-console.log(detalle)
   const {id} = useParams();
-  console.log(id)
+  
   useEffect(() => {
     dispatch(detail(id));
   },[]);

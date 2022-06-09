@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByContinent, filterByActivity } from "../actions";
 
-
-export default function Filtros({handleSort}){
+export default function Filtros({handleSort},){
     const dispatch = useDispatch();
     const filterCountry = useSelector((state) => state.countries);
     const actividades = useSelector(state => state.activities)
